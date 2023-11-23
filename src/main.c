@@ -4,31 +4,26 @@
 #include <stdlib.h>
 
 int main(int argc, char **argv) {
-    // Allocate memory for cells
-    Cell **population = malloc(populationSize * sizeof(Cell *));
+    int population[HEIGHT][WIDTH];
 
     initializePopulation(population);
-
-    setCell(population, 2, 2);
     displayPopulation(population);
     return 0;
 }
 
-void initializePopulation(Cell **population) {
-    for (int i = 0; i < populationSize; i++) {
-        population[i] = malloc(sizeof(Cell *));
-        population[i]->state = 0;
-    }
-}
-
-void displayPopulation(Cell **population) {
-    for (int i = 0; i < populationSize; i++) {
-        printf("%d", population[i]->state);
-        if (i % WIDTH == WIDTH - 1) {
-            printf("\n");
+void initializePopulation(int (*population)[WIDTH]) {
+    for (int y = 0; y < HEIGHT; y++) {
+        for (int x = 0; x < WIDTH; x++) {
+            population[y][x] = 0;
         }
     }
-    printf("\n");
 }
 
-void setCell(Cell **population, int x, int y) {}
+void displayPopulation(int population[HEIGHT][WIDTH]) {
+    for (int y = 0; y < HEIGHT; y++) {
+        for (int x = 0; x < WIDTH; x++) {
+            printf("%d", population[y][x]);
+        }
+        printf("\n");
+    }
+}
