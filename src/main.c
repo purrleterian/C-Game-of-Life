@@ -2,13 +2,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int main(int argc, char **argv) {
+    srand(time(NULL));
     int population[HEIGHT][WIDTH];
 
     initializePopulation(population);
-
-    setCellState(population, 1, 1, 1);
     displayPopulation(population);
     return 0;
 }
@@ -24,7 +24,9 @@ void setCellState(int (*population)[WIDTH], int x, int y, int state) {
 void initializePopulation(int (*population)[WIDTH]) {
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
-            population[y][x] = 0;
+            // 50% to be alive or dead
+            int randomState = rand() % 2;
+            population[y][x] = randomState;
         }
     }
 }
