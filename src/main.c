@@ -1,17 +1,25 @@
 #include "main.h"
 
 #include <stdio.h>
-
-// I could just make an array of 0 and 1, but a struct
-// can make the code more scalable
-typedef struct Cell {
-    int state;
-} Cell;
+#include <stdlib.h>
 
 int main(int argc, char **argv) {
     // Allocate memory for cells
-    // Cell *population = (Cell *)malloc(sizeof(Cell) * (width * height));
-    Cell population[populationSize];
+    Cell *population = (Cell *)malloc(sizeof(Cell) * populationSize);
 
+    initializePopulation(population);
+    displayPopulation(population);
     return 0;
+}
+
+void initializePopulation(Cell *population) {
+    for (int i = 0; i < populationSize; i++) {
+        population[i].state = 0;
+    }
+}
+
+void displayPopulation(const Cell *population) {
+    for (int i = 0; i < populationSize; i++) {
+        printf("%d", population[i].state);
+    }
 }
