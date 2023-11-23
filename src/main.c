@@ -16,7 +16,7 @@ int main(int argc, char **argv) {
 
 void initializePopulation(Cell **population) {
     for (int i = 0; i < populationSize; i++) {
-        population[i] = malloc(sizeof(Cell));
+        population[i] = malloc(sizeof(Cell *));
         population[i]->state = 0;
     }
 }
@@ -28,6 +28,7 @@ void displayPopulation(Cell **population) {
             printf("\n");
         }
     }
+    printf("\n");
 }
 
 void setCell(Cell **population, int x, int y) {}
