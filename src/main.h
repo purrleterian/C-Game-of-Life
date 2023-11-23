@@ -1,4 +1,4 @@
-#define WIDTH 50
+#define WIDTH 30
 #define HEIGHT 10
 
 #define populationSize (WIDTH * HEIGHT)
@@ -8,6 +8,9 @@
 typedef struct Cell {
     short state;
 } Cell;
+
+void setCellState(int (*ptrPopulation)[WIDTH], int x, int y, int state);
+int getCellState(int population[HEIGHT][WIDTH], int x, int y);
 
 void initializePopulation(int (*ptrPopulation)[WIDTH]);
 void displayPopulation(int population[HEIGHT][WIDTH]);
