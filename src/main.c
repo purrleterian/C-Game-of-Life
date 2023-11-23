@@ -10,6 +10,7 @@ int main(int argc, char **argv) {
     int running = 1;
 
     initializePopulation(population);
+    printf("\33[?25l");
     while (running) {
         displayPopulation(population);
         updatePopulation(population);
@@ -40,14 +41,11 @@ int getSurrounding(int population[HEIGHT][WIDTH], int x, int y) {
     for (int iy = -1; iy < 2; iy++) {
         for (int ix = -1; ix < 2; ix++) {
             // Remove the center cell, aka itself
-            if (!(ix == 0 && iy == 0)) total += population[y + iy][x + ix];
+            if (!(ix == 0 && iy == 0))
+                total += population[(y + iy) % HEIGHT][(x + ix) % WIDTH];
         }
     }
     return total;
-}
-
-int getCellState(int (*population)[WIDTH], int x, int y) {
-    return population[y][x];
 }
 
 void setCellState(int (*population)[WIDTH], int x, int y, int state) {

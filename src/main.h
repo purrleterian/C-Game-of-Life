@@ -1,4 +1,4 @@
-#define WIDTH 30
+#define WIDTH 35
 #define HEIGHT 10
 
 #define populationSize (WIDTH * HEIGHT)
@@ -10,7 +10,6 @@ typedef struct Cell {
 } Cell;
 
 void setCellState(int (*population)[WIDTH], int x, int y, int state);
-int getCellState(int population[HEIGHT][WIDTH], int x, int y);
 int getSurrounding(int population[HEIGHT][WIDTH], int x, int y);
 void updatePopulation(int (*population)[WIDTH]);
 
