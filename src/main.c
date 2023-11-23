@@ -7,11 +7,32 @@
 int main(int argc, char **argv) {
     srand(time(NULL));
     int population[HEIGHT][WIDTH];
+    int running = 1;
 
     initializePopulation(population);
-    displayPopulation(population);
-    printf("\n%d", getSurrounding(population, 4, 4));
+    while (running) {
+        displayPopulation(population);
+        updatePopulation(population);
+        system("clear");
+    }
+
     return 0;
+}
+
+void updatePopulation(int (*population)[WIDTH]) {
+    for (int y = 0; y < HEIGHT; y++) {
+        for (int x = 0; x < WIDTH; x++) {
+            int state = population[y][x];
+            int surrounding = getSurrounding(population, x, y);
+            if (state == 1 && (surrounding < 2 || surrounding > 3)) {
+                setCellState(population, x, y, 0);
+            } else if (state == 0 && (surrounding == 3)) {
+                setCellState(population, x, y, 1);
+            } else {
+                setCellState(population, x, y, state);
+            }
+        }
+    }
 }
 
 int getSurrounding(int population[HEIGHT][WIDTH], int x, int y) {
@@ -37,8 +58,7 @@ void initializePopulation(int (*population)[WIDTH]) {
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
             // 50% to be alive or dead
-            // int randomState = rand() % 2;
-            int randomState = 0;
+            int randomState = rand() % 2;
             population[y][x] = randomState;
         }
     }

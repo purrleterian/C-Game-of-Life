@@ -9,9 +9,10 @@ typedef struct Cell {
     short state;
 } Cell;
 
-void setCellState(int (*ptrPopulation)[WIDTH], int x, int y, int state);
+void setCellState(int (*population)[WIDTH], int x, int y, int state);
 int getCellState(int population[HEIGHT][WIDTH], int x, int y);
 int getSurrounding(int population[HEIGHT][WIDTH], int x, int y);
+void updatePopulation(int (*population)[WIDTH]);
 
 void initializePopulation(int (*ptrPopulation)[WIDTH]);
 void displayPopulation(int population[HEIGHT][WIDTH]);
