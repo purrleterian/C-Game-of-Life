@@ -10,7 +10,19 @@ int main(int argc, char **argv) {
 
     initializePopulation(population);
     displayPopulation(population);
+    printf("\n%d", getSurrounding(population, 4, 4));
     return 0;
+}
+
+int getSurrounding(int population[HEIGHT][WIDTH], int x, int y) {
+    int total = 0;
+    for (int iy = -1; iy < 2; iy++) {
+        for (int ix = -1; ix < 2; ix++) {
+            // Remove the center cell, aka itself
+            if (!(ix == 0 && iy == 0)) total += population[y + iy][x + ix];
+        }
+    }
+    return total;
 }
 
 int getCellState(int (*population)[WIDTH], int x, int y) {
@@ -25,7 +37,8 @@ void initializePopulation(int (*population)[WIDTH]) {
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
             // 50% to be alive or dead
-            int randomState = rand() % 2;
+            // int randomState = rand() % 2;
+            int randomState = 0;
             population[y][x] = randomState;
         }
     }
