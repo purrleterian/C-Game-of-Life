@@ -1,8 +1,6 @@
 #define WIDTH 35
 #define HEIGHT 10
 
-#define populationSize (WIDTH * HEIGHT)
-
 // I could just make an array of 0 and 1, but a struct
 // can make the code more scalable
 typedef struct Cell {

@@ -55,7 +55,6 @@ void setCellState(int (*population)[WIDTH], int x, int y, int state) {
 void initializePopulation(int (*population)[WIDTH]) {
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
-            // 50% to be alive or dead
             int randomState = rand() % 2;
             population[y][x] = randomState;
         }
