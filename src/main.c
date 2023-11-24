@@ -68,7 +68,7 @@ void displayPopulation(int population[HEIGHT][WIDTH]) {
             if (state == 0) {
                 printf(".");
             } else {
-                printf("O");
+                printf("@");
             }
         }
         printf("\n");
