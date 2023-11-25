@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <time.h>
 
 int main(int argc, char **argv) {
@@ -12,7 +13,7 @@ int main(int argc, char **argv) {
     initializePopulation(population);
     printf("\33[?25l");
     while (running) {
-        displayPopulation(population);
+        assembleFrame(population);
         updatePopulation(population);
         system("clear");
     }
@@ -68,9 +69,31 @@ void displayPopulation(int population[HEIGHT][WIDTH]) {
             if (state == 0) {
                 printf(".");
             } else {
-                printf("@");
+                printf("O");
             }
         }
         printf("\n");
     }
+}
+
+void assembleFrame(int population[HEIGHT][WIDTH]) {
+    char frameBuffer[populationSize + HEIGHT];
+    int i = 0;
+    while (i < populationSize) {
+        for (int iy = 0; iy < HEIGHT; iy++) {
+            for (int ix = 0; ix < WIDTH; ix++) {
+                if (population[iy][ix] == 1) {
+                    frameBuffer[i] = 'O';
+                } else if (population[iy][ix] == 0) {
+                    frameBuffer[i] = '.';
+                }
+                if (ix == WIDTH - 1) {
+                    frameBuffer[i] = '\n';
+                }
+                frameBuffer[i + 1] = '\0';
+                i++;
+            }
+        }
+    }
+    printf("%s", frameBuffer);
 }
