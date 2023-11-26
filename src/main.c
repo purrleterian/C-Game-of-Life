@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <windows.h>
 
 int main(int argc, char **argv) {
     srand(time(NULL));
@@ -15,6 +16,7 @@ int main(int argc, char **argv) {
     while (running) {
         assembleFrame(population);
         updatePopulation(population);
+        Sleep(10);
         system("clear");
     }
 
@@ -56,8 +58,7 @@ void setCellState(int (*population)[WIDTH], int x, int y, int state) {
 void initializePopulation(int (*population)[WIDTH]) {
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
-            int randomState = rand() % 2;
-            population[y][x] = randomState;
+            population[y][x] = rand() % 2;
         }
     }
 }
