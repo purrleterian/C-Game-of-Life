@@ -17,7 +17,7 @@ int main(int argc, char **argv) {
         assembleFrame(population);
         updatePopulation(population);
         Sleep(10);
-        system("clear");
+        system("cls");
     }
 
     return 0;
