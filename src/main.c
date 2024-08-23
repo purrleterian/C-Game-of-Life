@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <windows.h>
 
 int main(int argc, char **argv) {
     srand(time(NULL));
@@ -15,13 +16,14 @@ int main(int argc, char **argv) {
     while (running) {
         assembleFrame(population);
         updatePopulation(population);
+        Sleep(10);
         system("clear");
     }
 
     return 0;
 }
 
-void updatePopulation(int (*population)[WIDTH]) {
+void updatePopulation(int population[HEIGHT][WIDTH]) {
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
             int state = population[y][x];
@@ -49,15 +51,14 @@ int getSurrounding(int population[HEIGHT][WIDTH], int x, int y) {
     return total;
 }
 
-void setCellState(int (*population)[WIDTH], int x, int y, int state) {
+void setCellState(int population[HEIGHT][WIDTH], int x, int y, int state) {
     population[y][x] = state;
 }
 
-void initializePopulation(int (*population)[WIDTH]) {
+void initializePopulation(int population[HEIGHT][WIDTH]) {
     for (int y = 0; y < HEIGHT; y++) {
         for (int x = 0; x < WIDTH; x++) {
-            int randomState = rand() % 2;
-            population[y][x] = randomState;
+            population[y][x] = (int)rand() % 2;
         }
     }
 }
@@ -87,7 +88,7 @@ void assembleFrame(int population[HEIGHT][WIDTH]) {
                 } else if (population[iy][ix] == 0) {
                     frameBuffer[i] = '.';
                 }
-                if (ix == WIDTH - 1) {
+                if ((i % WIDTH) == WIDTH - 1) {
                     frameBuffer[i] = '\n';
                 }
                 frameBuffer[i + 1] = '\0';
