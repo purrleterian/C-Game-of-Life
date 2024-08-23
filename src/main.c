@@ -17,7 +17,11 @@ int main(int argc, char **argv) {
         assembleFrame(population);
         updatePopulation(population);
         Sleep(10);
+<<<<<<< HEAD
         system("cls");
+=======
+        system("clear");
+>>>>>>> e642d6c28bbf40a275dcf314710f3226c71dc8e2
     }
 
     return 0;
