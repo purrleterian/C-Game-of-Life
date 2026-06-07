@@ -84,7 +84,7 @@ void assembleFrame(int population[HEIGHT][WIDTH]) {
 
     for (int iy = 0; iy < HEIGHT; iy++) {
         for (int ix = 0; ix < WIDTH; ix++) {
-            frameBuffer[i++] = population[iy][ix] ? 'O' : '.';
+            frameBuffer[i++] = population[iy][ix] ? 'O' : ' ';
             
         }
         frameBuffer[i++] = '\n';
