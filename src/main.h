@@ -1,5 +1,5 @@
-#define WIDTH 90
-#define HEIGHT 25
+#define WIDTH 60
+#define HEIGHT 30
 #define populationSize (WIDTH * HEIGHT)
 
 // I could just make an array of 0 and 1, but a struct
